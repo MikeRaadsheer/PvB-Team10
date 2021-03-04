@@ -7,11 +7,28 @@ using System;
 
 public class MobileMovement : MonoBehaviour
 {
+    // Singleton Instance
+    public static MobileMovement Instance;
+
     private Gyroscope _gyro;
     private Vector3 _acceleration;
 
     public TextMeshProUGUI gyroTxt;
     public TextMeshProUGUI accelerationTxt;
+
+    private void Awake()
+    {
+        // Singleton
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+        
+    }
 
     void Start()
     {
@@ -35,4 +52,22 @@ public class MobileMovement : MonoBehaviour
             "\ny: " + Math.Floor(_acceleration.y * 100) +
             "\nz: " + Math.Floor(_acceleration.z * 100);
     }
+
+    //public class Singleton
+    //{
+    //    private static Singleton instance = null;
+    //    private Singleton() { }
+
+    //    public static Singleton Instance
+    //    {
+    //        get 
+    //        { 
+    //            if(instance == null)
+    //            {
+    //                instance = new Singleton();
+    //            }
+    //            return instance; 
+    //        }
+    //    }
+    //}
 }
