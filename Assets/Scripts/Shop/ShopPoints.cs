@@ -13,22 +13,20 @@ namespace Shop
         private GameObject _confirmButton;
         [SerializeField]
         private GameObject _messageDisplay;
-
         [SerializeField]
-        private Shop.Hat testItem;
-        public void TestBuy()
+        private GameObject _points;
+
+
+        private void Start()
         {
-            BuyItem(testItem);
+            PointSystem.Set(500);
+            _points.GetComponent<Text>().text = $"{PointSystem.Get()} punten";
         }
 
         public void BuyItem(Shop.Hat item)
-        {
-            int points;
-            // check if user has enough points
-            points = PointSystem.Get();
-
-            if (!PointSystem.CanBuy(item.price)) DisplayMessage("Je hebt niet genoeg punten om dit te kopen.");
-            else if (item.bought) DisplayMessage("Je hebt dit al gekocht.");
+        {            
+            if (item.bought) DisplayMessage("Je hebt dit al gekocht.");
+            else if(!PointSystem.CanBuy(item.price)) DisplayMessage("Je hebt niet genoeg punten om dit te kopen.");
             else
             {
                 // show confirmation window
@@ -46,6 +44,7 @@ namespace Shop
         {
             item.bought = true;
             PointSystem.Subtract(item.price);
+            _points.GetComponent<Text>().text = $"{PointSystem.Get()} punten";
 
             _confirmWindow.SetActive(false);
             _confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
