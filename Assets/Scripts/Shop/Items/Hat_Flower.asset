@@ -15,4 +15,4 @@ MonoBehaviour:
   hatName: Bloementjes
   model: {fileID: 0}
   price: 200
-  bought: 1
+  bought: 0

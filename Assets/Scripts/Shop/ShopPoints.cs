@@ -8,9 +8,11 @@ namespace Shop
     public class ShopPoints : MonoBehaviour
     {
         [SerializeField]
-        private GameObject confirmWindow;
+        private GameObject _confirmWindow;
         [SerializeField]
-        private GameObject confirmButton;
+        private GameObject _confirmButton;
+        [SerializeField]
+        private GameObject _messageDisplay;
 
         [SerializeField]
         private Shop.Hat testItem;
@@ -30,10 +32,10 @@ namespace Shop
             else
             {
                 // show confirmation window
-                confirmWindow.SetActive(true);
+                _confirmWindow.SetActive(true);
 
-                confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
-                confirmButton.GetComponent<Button>().onClick.AddListener(() =>
+                _confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
+                _confirmButton.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     Confirm(item);
                 });
@@ -45,23 +47,25 @@ namespace Shop
             item.bought = true;
             PointSystem.Subtract(item.price);
 
-            confirmWindow.SetActive(false);
-            confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            _confirmWindow.SetActive(false);
+            _confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
         public void Cancel()
         {            
-            confirmWindow.SetActive(false);
-            confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            _confirmWindow.SetActive(false);
+            _confirmButton.GetComponent<Button>().onClick.RemoveAllListeners();
         }
 
         public void DisplayMessage(string msg)
         {
-            Debug.LogError(msg);
-            // change Text text
+            _messageDisplay.transform.Find("Message").GetComponent<Text>().text = msg;
+            _messageDisplay.SetActive(true);
+        }
 
-            // show message
-
+        public void RemoveDisplayMessage()
+        {
+            _messageDisplay.SetActive(false);
         }
 
     }
