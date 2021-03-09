@@ -73,7 +73,7 @@ public class MainMenu : MonoBehaviour
     public void OnShopClick()
     {
         NavigateToMenu(1);
-        Debug.Log("shop clicked");
+        Debug.Log("shop clicked"); 
     }
     public void OnBackClick()
     {
