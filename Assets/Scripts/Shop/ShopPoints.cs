@@ -25,8 +25,8 @@ namespace Shop
             _pointSystem = FindObjectOfType<PointSystem>();
             _itemSaver = FindObjectOfType<ItemSaver>();
 
-            _points.GetComponent<Text>().text = $"{_pointSystem.Get()} punten";
             _pointSystem.Add(2000);
+            _points.GetComponent<Text>().text = $"{_pointSystem.Get()} punten";
         }
 
         public void BuyItem(Shop.Hat item)

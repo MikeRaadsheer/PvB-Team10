@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9573a82a838c483418dd799c2ca74db4, type: 3}
-  m_Name: Hat_Flower
+  m_Name: Hat_Cherry
   m_EditorClassIdentifier: 
-  hatName: Bloementjes
+  hatName: Kersen
   model: {fileID: 0}
-  thumbnail: {fileID: 21300000, guid: d9306fd9d162bcf4fa8a69526127658d, type: 3}
+  thumbnail: {fileID: 21300000, guid: f287827c597b0f0468431458208705bb, type: 3}
   price: 200
   bought: 0

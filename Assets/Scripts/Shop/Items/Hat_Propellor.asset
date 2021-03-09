@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hatName: Propellor
   model: {fileID: 0}
-  thumbnail: {fileID: 21300000, guid: d9306fd9d162bcf4fa8a69526127658d, type: 3}
+  thumbnail: {fileID: 21300000, guid: 92c4db1ead57426468dcf2976d8281df, type: 3}
   price: 200
   bought: 0

@@ -53,6 +53,7 @@ public class PointSystem : MonoBehaviour
 
     private void UpdateAmount()
     {
+        Debug.Log("Updated points");
         _save.Save<PointsData>(_points, "points");
     }
 
