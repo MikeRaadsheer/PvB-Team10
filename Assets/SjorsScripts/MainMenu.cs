@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     private CanvasGroup fadegroup;
     private float fadeInSpeed = 0.33f;
+    [SerializeField]
+    private GameObject CloseConfirmation;
 
     public RectTransform menuContainer;
     public Transform PlayMenu;
@@ -23,6 +25,8 @@ public class MainMenu : MonoBehaviour
         fadegroup = FindObjectOfType<CanvasGroup>();
 
         fadegroup.alpha = 1;
+
+        
 
 
     }
@@ -79,6 +83,20 @@ public class MainMenu : MonoBehaviour
     {
         NavigateToMenu(0);
         Debug.Log("go back");
+        if(menuContainer.anchoredPosition3D == Vector3.zero)
+        {
+            CloseConfirmation.SetActive(true);
+        }
+    }
+    public void OnDontStop()
+    {
+        CloseConfirmation.SetActive(false);
+    }
+
+    public void StopClick()
+    {
+        Application.Quit();
+        Debug.Log("quit");
     }
 
 }
