@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hatName: Bloementjes
   model: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: d9306fd9d162bcf4fa8a69526127658d, type: 3}
   price: 200
-  bought: 1
+  bought: 0

@@ -14,6 +14,11 @@ public class ShopItemButton : MonoBehaviour
 
     void Start()
     {
+        // update scriptable object
+        var item = FindObjectOfType<ItemSaver>().GetHat(_currentHat.hatName);
+        _currentHat.price = item.price;
+        _currentHat.bought = item.isBought;
+
         this.GetComponent<Button>().onClick.AddListener( ()=> 
             {
                 //if(!_currentHat.bought)
@@ -21,9 +26,10 @@ public class ShopItemButton : MonoBehaviour
             });
 
         // Get child text gameobject and set price
-        //if(_currentHat.bought) this.transform.Find("Price").GetComponent<Text>().text = "Al gekocht.";
+        //if(_currentHat.bought) this.transform.Find("Price").GetComponent<Text>().text = "Gekocht.";
         //else
         this.transform.Find("Price").GetComponent<Text>().text = $"{_currentHat.price} punten";
+        this.transform.Find("Thumbnail").GetComponent<Image>().sprite = _currentHat.thumbnail;
 
     }
 

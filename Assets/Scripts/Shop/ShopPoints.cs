@@ -17,18 +17,23 @@ namespace Shop
         private GameObject _points;
 
         private bool _windowOpen = false;
-
+        private PointSystem _pointSystem;
+        private ItemSaver _itemSaver;
 
         private void Start()
         {
-            PointSystem.Set(500);
-            _points.GetComponent<Text>().text = $"{PointSystem.Get()} punten";
+            _pointSystem = FindObjectOfType<PointSystem>();
+            _itemSaver = FindObjectOfType<ItemSaver>();
+
+            _pointSystem.Add(500);
+
+            _points.GetComponent<Text>().text = $"{_pointSystem.Get()} punten";
         }
 
         public void BuyItem(Shop.Hat item)
         {            
             if (item.bought) DisplayMessage("Je hebt dit al gekocht.");
-            else if(!PointSystem.CanBuy(item.price)) DisplayMessage("Je hebt niet genoeg punten.");
+            else if(!_pointSystem.CanBuy(item.price)) DisplayMessage("Je hebt niet genoeg punten.");
             else if (!_windowOpen)
             {
                 // show confirmation window
@@ -47,8 +52,10 @@ namespace Shop
         {
 
             item.bought = true;
-            PointSystem.Subtract(item.price);
-            _points.GetComponent<Text>().text = $"{PointSystem.Get()} punten";
+            _itemSaver.SaveHat(item);
+
+            _pointSystem.Subtract(item.price);
+            _points.GetComponent<Text>().text = $"{_pointSystem.Get()} punten";
 
             _confirmWindow.SetActive(false);
             _windowOpen = false;

@@ -1,59 +1,59 @@
 ﻿using UnityEngine;
 using System;
+using System.IO;
 
-public static class PointSystem
+public class PointSystem : MonoBehaviour
 {
-    private static int _points;
-    private static bool _setup = false;
+    private PointsData _points;
+    private bool _setup = false;
 
+    private DataManager _manager;
+    private ReadData _load;
+    private WriteData _save;
 
+    private void Start()
+    {
+        _manager = FindObjectOfType<DataManager>();
+        _load = FindObjectOfType<ReadData>();
+        _save = FindObjectOfType<WriteData>();
 
-    public static bool CanBuy(int price)
+        if(!File.Exists(_manager.GetSaveFilePath("points")))
+        {
+            // create points json
+            _points = new PointsData();
+            _save.Save<PointsData>(_points, "points");
+        } else
+        {
+            _points = (PointsData) _load.Load<PointsData>("points");
+        }
+    }
+
+    public bool CanBuy(int price)
     {
         if (Get() - price >= 0) return true;
         return false;
     }
 
-    public static int Get()
+    public int Get()
     {
-        if(!_setup)
-        {
-            try
-            {
-                _points = PlayerPrefs.GetInt("Points");
-                return _points;
-            } catch/*(Exception e)*/
-            {
-                _points = 0;
-                UpdateAmount();
-                return _points;
-                //throw new Exception($"Could not obtain points. \n{e.Message}");
-            }
-        }
-        return _points;
+        return _points.currentPoints;
     }
 
-    public static void Add(int amount)
+    public void Add(int amount)
     {
-        _points += amount;
+        _points.AddPoints(amount);
         UpdateAmount();
     }
 
-    public static void Subtract(int amount)
+    public void Subtract(int amount)
     {
-        _points -= amount;
+        _points.SubtractPoints(amount);
         UpdateAmount();
     }
 
-    public static void Set(int value)
+    private void UpdateAmount()
     {
-        _points = value;
-        UpdateAmount();
-    }
-
-    private static void UpdateAmount()
-    {
-        PlayerPrefs.SetInt("Points", _points);
+        _save.Save<PointsData>(_points, "points");
     }
 
 }

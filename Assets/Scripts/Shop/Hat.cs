@@ -10,6 +10,7 @@ namespace Shop
         public Mesh model;
 
         // Shop variables
+        public Sprite thumbnail;
         public int price;
         public bool bought;
     }

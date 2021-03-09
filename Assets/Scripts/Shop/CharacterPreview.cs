@@ -13,9 +13,6 @@ namespace Shop {
 
         void Update()
         {
-            //_rotation += _rotationSpeed * Time.deltaTime;
-            //_rotation %= 360;
-
             GetComponent<Transform>().Rotate(0, _rotationSpeed * Time.deltaTime, 0, Space.Self);
         }
     }
