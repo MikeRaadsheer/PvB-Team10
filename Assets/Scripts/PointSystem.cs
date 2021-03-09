@@ -6,6 +6,8 @@ public static class PointSystem
     private static int _points;
     private static bool _setup = false;
 
+
+
     public static bool CanBuy(int price)
     {
         if (Get() - price >= 0) return true;
