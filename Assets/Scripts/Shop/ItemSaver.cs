@@ -7,7 +7,7 @@ public class ItemSaver : MonoBehaviour
     private ReadData _load;
     private WriteData _save;
 
-    void Start()
+    void Awake()
     {
         _load = FindObjectOfType<ReadData>();
         _save = FindObjectOfType<WriteData>();

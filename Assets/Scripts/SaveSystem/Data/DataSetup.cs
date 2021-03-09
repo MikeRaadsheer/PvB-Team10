@@ -37,6 +37,7 @@ public class DataSetup : MonoBehaviour
         ////<<<<<<<<<<<<<< for loop, list of all shop items
         for(int i = 0; i < _hats.Count; i++)
         {
+            _hats[i].bought = false;
             items.AddHat(new Item(_hats[i].hatName, _hats[i].price, _hats[i].bought));
         }
         
