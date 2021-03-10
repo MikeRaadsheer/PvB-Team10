@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hat_Cherry
   m_EditorClassIdentifier: 
   hatName: Kersen
-  model: {fileID: 0}
+  model: {fileID: 7829722748772196326, guid: 19de5878c2298c442bb4505d6bb8f243, type: 3}
   thumbnail: {fileID: 21300000, guid: f287827c597b0f0468431458208705bb, type: 3}
   price: 200
   bought: 0

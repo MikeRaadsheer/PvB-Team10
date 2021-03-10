@@ -7,7 +7,7 @@ namespace Shop
     {
         // Main variables
         public string hatName;
-        public Mesh model;
+        public GameObject model;
 
         // Shop variables
         public Sprite thumbnail;

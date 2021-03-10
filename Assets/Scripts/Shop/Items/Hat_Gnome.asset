@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hat_Gnome
   m_EditorClassIdentifier: 
   hatName: Gnome
-  model: {fileID: 0}
+  model: {fileID: 6279210956235440697, guid: cc44bf79190f9714bb4ec900e86f8ac2, type: 3}
   thumbnail: {fileID: 21300000, guid: 5976e23fe861c9b4eabaeb4147853a6e, type: 3}
   price: 200
   bought: 0

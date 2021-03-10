@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hat_Top
   m_EditorClassIdentifier: 
   hatName: Top Hoed
-  model: {fileID: 0}
+  model: {fileID: 170929783349518557, guid: a9b6553c34146944f8368b0ab0d43d5e, type: 3}
   thumbnail: {fileID: 21300000, guid: ab112c41fcc32344ea07a1db03a82913, type: 3}
   price: 200
   bought: 0
