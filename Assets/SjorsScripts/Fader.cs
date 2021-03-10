@@ -22,11 +22,12 @@ public class Fader : MonoBehaviour
     }
     private void Update()
     {
+        //starts fader
         if(Time.time < MinimumFadeTime)
         {
             fader.alpha = 1 - Time.time;
         }
-
+        //switches scene when faders alpha hits 1
         if(Time.time > MinimumFadeTime && loadTime != 0)
         {
             fader.alpha = Time.time - MinimumFadeTime;

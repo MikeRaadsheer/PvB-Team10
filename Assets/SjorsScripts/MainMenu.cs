@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     private CanvasGroup fadegroup;
     private float fadeInSpeed = 0.33f;
+
+    // closing panel
     [SerializeField]
     private GameObject CloseConfirmation;
 
@@ -66,29 +68,24 @@ public class MainMenu : MonoBehaviour
     public void OnCharactersClick()
     {
         NavigateToMenu(3);
-        Debug.Log("character clicked");
     }
     public void OnPlayClick()
     {
         NavigateToMenu(2);
-        Debug.Log("play clicked");
-
     }
     public void OnShopClick()
     {
         NavigateToMenu(1);
-        Debug.Log("shop clicked"); 
     }
     public void OnBackClick()
     {
         NavigateToMenu(0);
-        Debug.Log("go back");
         if(menuContainer.anchoredPosition3D == Vector3.zero)
         {
             CloseConfirmation.SetActive(true);
         }
     }
-    public void OnDontStop()
+    public void DontStop()
     {
         CloseConfirmation.SetActive(false);
     }
@@ -96,7 +93,6 @@ public class MainMenu : MonoBehaviour
     public void StopClick()
     {
         Application.Quit();
-        Debug.Log("quit");
     }
 
 }
