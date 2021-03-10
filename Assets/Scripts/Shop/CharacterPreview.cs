@@ -24,6 +24,7 @@ namespace Shop {
 
         private void Awake()
         {
+
             _ownedHats.Add("none");
             _hatParent = GetComponent<Transform>().Find("Hat");
         }
@@ -52,8 +53,10 @@ namespace Shop {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
                 newHat.transform.parent = _hatParent;
-                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + 0, mainRotation.y + 0, mainRotation.z + 0);
-                newHat.transform.localPosition = _hatOffset;
+                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + newHat.transform.eulerAngles.x,
+      mainRotation.y + newHat.transform.eulerAngles.y,
+      mainRotation.z + newHat.transform.eulerAngles.z);
+                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, _hatOffset.y + newHat.transform.position.y, _hatOffset.z + newHat.transform.position.z);
                 newHat.name = "Hat";
                 
             }
@@ -79,8 +82,10 @@ namespace Shop {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
                 newHat.transform.parent = _hatParent;
-                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + 0, mainRotation.y + 0, mainRotation.z + 0);
-                newHat.transform.localPosition = _hatOffset;
+                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + newHat.transform.eulerAngles.x,
+      mainRotation.y + newHat.transform.eulerAngles.y,
+      mainRotation.z + newHat.transform.eulerAngles.z);
+                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, _hatOffset.y + newHat.transform.position.y, _hatOffset.z + newHat.transform.position.z);
                 newHat.name = "Hat";
                 
             }
