@@ -20,12 +20,12 @@ namespace Shop {
 
         [SerializeField]
         private Vector3 _hatOffset = new Vector3(0, 1.7f, 0);
-        private Transform _character;
+        private Transform _hatParent;
 
         private void Awake()
         {
             _ownedHats.Add("none");
-            _character = GetComponent<Transform>();
+            _hatParent = GetComponent<Transform>().Find("Hat");
         }
 
         void Update()
@@ -35,10 +35,12 @@ namespace Shop {
 
         public void NextHat()
         {
+            Vector3 mainRotation = GetComponent<Transform>().eulerAngles;
+
             _previousIndex = _hatIndex;
             CheckOwnedHats();
             // Remove current hat
-            if (_ownedHats[_previousIndex] != "none") Destroy(_character.transform.Find("Hat").gameObject);
+            if (_ownedHats[_previousIndex] != "none") Destroy(_hatParent.transform.Find("Hat").gameObject);
 
             // Increase hat index
             ++_hatIndex;
@@ -49,20 +51,23 @@ namespace Shop {
             {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
-                newHat.transform.parent = _character;
+                newHat.transform.parent = _hatParent;
+                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + 0, mainRotation.y + 0, mainRotation.z + 0);
                 newHat.transform.localPosition = _hatOffset;
                 newHat.name = "Hat";
-                newHat.transform.eulerAngles = new Vector3(0, 0, 0);
+                
             }
                 
         }
 
         public void PreviousHat()
         {
+            Vector3 mainRotation = GetComponent<Transform>().eulerAngles;
+
             _previousIndex = _hatIndex;
             CheckOwnedHats();
             // Remove current hat
-            if (_ownedHats[_previousIndex] != "none") Destroy(_character.transform.Find("Hat").gameObject);
+            if (_ownedHats[_previousIndex] != "none") Destroy(_hatParent.transform.Find("Hat").gameObject);
 
             // Increase hat index
             --_hatIndex;
@@ -73,10 +78,11 @@ namespace Shop {
             {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
-                newHat.transform.parent = _character;
+                newHat.transform.parent = _hatParent;
+                newHat.transform.rotation = Quaternion.Euler(mainRotation.x + 0, mainRotation.y + 0, mainRotation.z + 0);
                 newHat.transform.localPosition = _hatOffset;
                 newHat.name = "Hat";
-                newHat.transform.eulerAngles = new Vector3(0, 0, 0);
+                
             }
         }
 
