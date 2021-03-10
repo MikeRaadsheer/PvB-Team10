@@ -52,6 +52,7 @@ namespace Shop {
                 newHat.transform.parent = _character;
                 newHat.transform.localPosition = _hatOffset;
                 newHat.name = "Hat";
+                newHat.transform.eulerAngles = new Vector3(0, 0, 0);
             }
                 
         }
@@ -75,6 +76,7 @@ namespace Shop {
                 newHat.transform.parent = _character;
                 newHat.transform.localPosition = _hatOffset;
                 newHat.name = "Hat";
+                newHat.transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
 
