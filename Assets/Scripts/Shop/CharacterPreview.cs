@@ -7,7 +7,6 @@ namespace Shop {
 
     public class CharacterPreview : MonoBehaviour
     {
-
         [SerializeField]
         private float _rotationSpeed = 1f;
         private float _rotation = 180f;
@@ -24,7 +23,6 @@ namespace Shop {
 
         private void Awake()
         {
-
             _ownedHats.Add("none");
             _hatParent = GetComponent<Transform>().Find("Hat");
         }
@@ -53,14 +51,17 @@ namespace Shop {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
                 newHat.transform.parent = _hatParent;
+
                 newHat.transform.rotation = Quaternion.Euler(mainRotation.x + newHat.transform.eulerAngles.x,
-      mainRotation.y + newHat.transform.eulerAngles.y,
-      mainRotation.z + newHat.transform.eulerAngles.z);
-                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, _hatOffset.y + newHat.transform.position.y, _hatOffset.z + newHat.transform.position.z);
+                    mainRotation.y + newHat.transform.eulerAngles.y,
+                    mainRotation.z + newHat.transform.eulerAngles.z);
+
+                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, 
+                    _hatOffset.y + newHat.transform.position.y, 
+                    _hatOffset.z + newHat.transform.position.z);
+
                 newHat.name = "Hat";
-                
             }
-                
         }
 
         public void PreviousHat()
@@ -82,12 +83,16 @@ namespace Shop {
                 GameObject newHat;
                 newHat = Instantiate(RetrieveHat(_ownedHats[_hatIndex]).model);
                 newHat.transform.parent = _hatParent;
+
                 newHat.transform.rotation = Quaternion.Euler(mainRotation.x + newHat.transform.eulerAngles.x,
-      mainRotation.y + newHat.transform.eulerAngles.y,
-      mainRotation.z + newHat.transform.eulerAngles.z);
-                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, _hatOffset.y + newHat.transform.position.y, _hatOffset.z + newHat.transform.position.z);
+                    mainRotation.y + newHat.transform.eulerAngles.y,
+                    mainRotation.z + newHat.transform.eulerAngles.z);
+
+                newHat.transform.localPosition = new Vector3(_hatOffset.x + newHat.transform.position.x, 
+                    _hatOffset.y + newHat.transform.position.y, 
+                    _hatOffset.z + newHat.transform.position.z);
+
                 newHat.name = "Hat";
-                
             }
         }
 
